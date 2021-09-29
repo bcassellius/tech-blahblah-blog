@@ -2,10 +2,14 @@ const router = require('express').Router();
 const { Comment, User, Post } = require('../../models');
 
 // GET /api/comments
-router.get('/', (req, res) => {});
-
-// GET /api/comments/1
-router.get('/:id', (req, res) => {});
+router.get('/', (req, res) => {
+    Comment.findAll()
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
 
 // POST /api/comments
 router.post('/', (req, res) => {
