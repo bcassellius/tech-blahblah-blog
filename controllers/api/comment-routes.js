@@ -27,8 +27,8 @@ router.post('/', (req, res) => {
     }
 });
 
-// PUT /api/comments/1
-router.put('/:id', (req, res) => {});
+// // PUT /api/comments/1
+// router.put('/:id', (req, res) => {});
 
 // DELETE /api/comments/1
 router.delete('/:id', (req, res) => {
