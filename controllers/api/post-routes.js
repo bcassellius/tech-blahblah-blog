@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET /api/posts
 router.get('/', (req, res) => {
@@ -64,9 +65,8 @@ router.get('/:id', (req, res) => {
 });
 
 // POST /api/posts
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     // expects {title: "Bri's Blog is Open!", post_url: 'http://maretales-africanadventure.blogspot.com/' user_id: 1}
-    if (req.session) {
         Post.create({
             title: req.body.title,
             post_url: req.body.post_url,
@@ -77,7 +77,6 @@ router.post('/', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
-    }
 });
 
 // PUT /api/posts/:id
