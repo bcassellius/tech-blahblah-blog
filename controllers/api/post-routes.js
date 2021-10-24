@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET /api/posts/1
+// GET /api/posts/:id
 router.get('/:id', (req, res) => {
     Post.findOne({
         where: {
@@ -36,10 +36,6 @@ router.get('/:id', (req, res) => {
         },
         attributes: ['id', 'post_url', 'title', 'created_at'],
         include: [
-            {
-                model: Post,
-                attributes: ['id', 'title', 'post_url', 'created_at']
-            },
             {
                 model: Comment,
                 attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
@@ -70,19 +66,21 @@ router.get('/:id', (req, res) => {
 // POST /api/posts
 router.post('/', (req, res) => {
     // expects {title: "Bri's Blog is Open!", post_url: 'http://maretales-africanadventure.blogspot.com/' user_id: 1}
-    Post.create({
-        title: req.body.title,
-        post_url: req.body.post_url,
-        user_id: req.body.user_id
-    })
-    .then(dbPostData => res.json(dbPostData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+    if (req.session) {
+        Post.create({
+            title: req.body.title,
+            post_url: req.body.post_url,
+            user_id: req.body.user_id
+        })
+        .then(dbPostData => res.json(dbPostData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+    }
 });
 
-// PUT /api/posts/1
+// PUT /api/posts/:id
 router.put('/:id', (req, res) => {
     // update a post's title
     Post.update(
@@ -108,7 +106,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// DELETE /api/posts/1
+// DELETE /api/posts/:id
 router.delete('/:id', (req, res) => {
     Post.destroy({
         where: {
