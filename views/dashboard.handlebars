@@ -1,3 +1,6 @@
+{{!-- MUST BE LOGGED IN --}}
+{{!-- Shows up on login and when dashboard is selected --}}
+
 <section>
   <h2>Create New Post</h2>
 
@@ -14,6 +17,7 @@
   </form>
 </section>
 
+{{!-- The user posts this user created will show on the dashboard --}}
 {{#if posts.length}}
 <section>
   <h2>Your Posts</h2>
@@ -25,6 +29,7 @@
   {{/each}}
 </section>
 {{else}}
+{{!-- if user doesn't have posts yet, this note will show --}}
 <h3>Fill out the form to create your first post!</h3>
 {{/if}}
 

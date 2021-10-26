@@ -16,6 +16,7 @@ async function signupFormHandler(event) {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    // When successful signup - Signs user in and takes user to dashboard by default
     if (response.ok) {
       document.location.replace('/dashboard/');
     } else {
@@ -40,7 +41,8 @@ async function loginFormHandler(event) {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if (response.ok) {
+//takes user to dashboard by default when logged in
+    if (response.ok) { 
       document.location.replace('/dashboard/');
     } else {
       alert(response.statusText);
@@ -48,5 +50,6 @@ async function loginFormHandler(event) {
   }
 }
 
+// listen for when a button is clicked
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);

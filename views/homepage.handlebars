@@ -1,5 +1,8 @@
-  {{#each posts as |post|}}
-  <li>
-    {{> post-info post }}
-  </li>
-  {{/each}}
+{{!-- MUST BE LOGGED IN --}}
+{{!-- Shows posts the the user has created --}}
+
+{{#each posts as |post|}}
+<li>
+  {{> post-info post }}
+</li>
+{{/each}}

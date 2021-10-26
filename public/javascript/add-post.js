@@ -15,6 +15,7 @@ async function newFormHandler(event) {
     }
   });
 
+  // takes user to dashboard by default when post is submitted
   if (response.ok) {
     document.location.replace('/dashboard');
   } else {
@@ -22,4 +23,5 @@ async function newFormHandler(event) {
   }
 }
   
+// listen for the post to be submitted
 document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);

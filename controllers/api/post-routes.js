@@ -3,7 +3,7 @@ const { Post, User, Comment } = require('../../models');
 const sequelize = require("../../config/connection");
 const withAuth = require('../../utils/auth');
 
-// GET /api/posts
+// GET /api/posts --> finds all the blog posts and orders them by date created
 router.get('/', (req, res) => {
     Post.findAll({
         attributes: ['id', 'post_body', 'title', 'created_at'],
@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET /api/posts/:id
+// GET /api/posts/:id --> finds 1 post using the post's id
 router.get('/:id', (req, res) => {
     Post.findOne({
         where: {
@@ -65,9 +65,9 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// POST /api/posts
+// POST /api/posts --> creates a new blog post -->must be logged in first
 router.post('/', withAuth, (req, res) => {
-    // expects {title: "Bri's Blog is Open!", post_url: 'http://maretales-africanadventure.blogspot.com/' user_id: 1}
+    // expects {title: user input, post_body: user input, user_id: auto generated}
     Post.create({
         title: req.body.title,
         post_body: req.body.post_body,
@@ -80,9 +80,9 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-// PUT /api/posts/:id
+// PUT /api/posts/:id --> finds one post and creates editable field to change text
 router.put('/:id', (req, res) => {
-    // update a post's title
+    // update a post's title and text
     Post.update(
         {
             title: req.body.title,
@@ -107,7 +107,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// DELETE /api/posts/:id
+// DELETE /api/posts/:id --> finds one post by id and deletes that post
 router.delete('/:id', (req, res) => {
     Post.destroy({
         where: {

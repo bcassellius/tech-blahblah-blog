@@ -4,6 +4,7 @@ async function editFormHandler(event) {
     const title = document.querySelector('input[name="post-title"]').value.trim();
     const post_body = document.getElementById('post-body').value.trim();
     
+    // selects 1 post
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
@@ -18,6 +19,7 @@ async function editFormHandler(event) {
         }
     });
   
+    // takes user back to dashboard once edits are submitted
     if (response.ok) {
         document.location.replace('/dashboard/');
     } else {
@@ -25,4 +27,5 @@ async function editFormHandler(event) {
     }
 }
   
+// listens for edit to be submitted
 document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);

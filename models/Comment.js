@@ -1,10 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
+//create comment model
 class Comment extends Model {}
 
 Comment.init(
-    {//collum definitions
+    {//column definitions
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -43,4 +44,5 @@ Comment.init(
     }
 );
 
+// export
 module.exports = Comment;

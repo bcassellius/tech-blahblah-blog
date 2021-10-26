@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 
-// GET /api/users
+// GET /api/users -->gets all users
 router.get('/', (req, res) => {
   User.findAll({
     attributes: { exclude: ['password'] },
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET /api/users/login
+// GET /api/users/login --> gets 1 user by email to login
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
@@ -43,6 +43,7 @@ router.post('/login', (req, res) => {
   });
 });
 
+// takes the 1 user by the logged in session and logs them out -->end the session
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -54,7 +55,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-// POST /api/users
+// POST /api/users -->makes a new user based on user input
 router.post('/', (req, res) => {
   // expects {username: 'Henry', email: 'henry@email.com', password: 'Password123' }
   User.create({
@@ -77,7 +78,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// GET /api/users/:id
+// GET /api/users/:id --> finds one user by id and shows their contributions but hides the password when showing data
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
@@ -113,7 +114,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-// PUT /api/users/:id
+// PUT /api/users/:id -->finds 1 user by id and modifies their login details by user input
 router.put('/:id', (req, res) => {
   // expects {username: 'Henry', email: 'henry@email.com', password: 'Password123' }
   User.update(req.body, {
@@ -135,7 +136,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// DELETE /api/users/:id
+// DELETE /api/users/:id --> finds 1 user by id and removes them from the database
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {

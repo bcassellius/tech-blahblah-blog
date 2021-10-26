@@ -42,7 +42,7 @@ router.get('/', withAuth, (req, res) => {
         });
     });
 
-    // GET  /dashboard
+// GET  /dashboard --> find one post by primary key so that changes can be made
 router.get('/edit/:id', withAuth, (req, res) => {
     Post.findByPk(req.params.id, {
         attributes: [

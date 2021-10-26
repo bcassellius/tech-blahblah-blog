@@ -1,3 +1,7 @@
+{{!-- MUST BE LOGGED IN --}}
+{{!-- Shows up when a specific post is clicked --}}
+{{!-- User can only modify own posts --}}
+
 <article>
   <a href="/dashboard"> &larr; Back to dashboard</a>
   <h2>
@@ -6,7 +10,6 @@
   <form class='edit-post-form'>
     <div>
       <input name="post-title" type="text" value="{{post.title}}" />
-      {{!-- <span>({{format_post_body post.post_body}})</span> --}}
     </div>
     <div>
       <textarea id="post-body" name="post-body">{{post.post_body}}</textarea>
@@ -22,6 +25,7 @@
   </form>
 </article>
 
+{{!-- User can add additional comments from here as well. --}}
 <form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
