@@ -1,10 +1,10 @@
-const router = require("express").Router();
-const { User, Post, Comment } = require("../../models");
+const router = require('express').Router();
+const { User, Post, Comment } = require('../../models');
 
 // GET /api/users
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   User.findAll({
-    attributes: { exclude: ["password"] },
+    attributes: { exclude: ['password'] },
   })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
@@ -37,7 +37,7 @@ router.post('/login', (req, res) => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
-
+  
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
   });
@@ -55,7 +55,7 @@ router.post('/logout', (req, res) => {
 });
 
 // POST /api/users
-router.post("/", (req, res) => {
+router.post('/', (req, res) => {
   // expects {username: 'Henry', email: 'henry@email.com', password: 'Password123' }
   User.create({
     username: req.body.username,
@@ -67,7 +67,7 @@ router.post("/", (req, res) => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
-
+  
         res.json(dbUserData);
       });
     })
@@ -97,7 +97,6 @@ router.get('/:id', (req, res) => {
           attributes: ['title']
         }
       },
-
     ]
   })
     .then(dbUserData => {
@@ -115,7 +114,7 @@ router.get('/:id', (req, res) => {
 
 
 // PUT /api/users/:id
-router.put("/:id", (req, res) => {
+router.put('/:id', (req, res) => {
   // expects {username: 'Henry', email: 'henry@email.com', password: 'Password123' }
   User.update(req.body, {
     individualHooks: true,
