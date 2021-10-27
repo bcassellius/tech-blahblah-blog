@@ -141,12 +141,8 @@ main {
 .post {
   margin-bottom: 2%;
   line-height: 150%;
-}
-
-.post .title span {
-  font-style: italic;
-  font-size: 90%;
-  color: #7d7d7d;
+  padding: 10px;
+  border-bottom: 2px solid #fbf0ff;
 }
 
 .edit-link {
@@ -164,7 +160,7 @@ main {
 }
 
 .comment:nth-child(odd) {
-  background-color: #fff5eb;
+  background-color: #fbf0ff;
 }
 
 .comment .meta {
@@ -182,7 +178,7 @@ main {
 }
 
 footer {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #fbf0ff;
   display: flex;
   justify-content: center;
   padding: 1%;
