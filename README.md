@@ -33,7 +33,7 @@ This project was created by Bri Cassellius as part of coding bootcamp.
 
 <a name='github'></a>
 ## Github
-This app can be found on GitHub at https://github.com/bcassellius/tech-blog.git.
+This app can be found on GitHub at https://github.com/bcassellius/tech-blahblah-blog.git.
 
 <a name='questions'></a>
 ## Questions
