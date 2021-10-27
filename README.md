@@ -17,7 +17,7 @@ This app allows users to create an account, log in, and post blogs and comments.
 
 <a name='usage'></a>
 ## URL
-The deployed app can be found at https://dashboard.heroku.com/apps/peaceful-harbor-61483. From the login page, a user can login or if it is the first time, create a new account.
+The deployed app can be found at https://peaceful-harbor-61483.herokuapp.com/. From the login page, a user can login or if it is the first time, create a new account.
  
  
 ![image](https://user-images.githubusercontent.com/83994997/138986604-c61c8745-dbc7-400d-a531-70cf6877479f.png)
